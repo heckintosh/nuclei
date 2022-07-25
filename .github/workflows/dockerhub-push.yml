@@ -17,7 +17,7 @@ jobs:
       - name: Get Github tag
         id: meta
         run: |
-          echo "::set-output name=tag::$(curl --silent "https://api.github.com/repos/projectdiscovery/nuclei/releases/latest" | jq -r .tag_name)"
+          echo "::set-output name=tag::$(curl --silent "https://api.github.com/repos/heckintosh/nuclei/releases/latest" | jq -r .tag_name)"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -37,4 +37,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: projectdiscovery/nuclei:latest,projectdiscovery/nuclei:${{ steps.meta.outputs.tag }}
+          tags: heckintosh/nuclei:latest,heckintosh/nuclei:${{ steps.meta.outputs.tag }}

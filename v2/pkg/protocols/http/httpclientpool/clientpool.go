@@ -13,15 +13,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/utils"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/utils"
 
 	"github.com/pkg/errors"
 	"golang.org/x/net/proxy"
 	"golang.org/x/net/publicsuffix"
 
 	"github.com/projectdiscovery/fastdialer/fastdialer"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/protocolstate"
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/protocolstate"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
 	"github.com/projectdiscovery/rawhttp"
 	"github.com/projectdiscovery/retryablehttp-go"
 )

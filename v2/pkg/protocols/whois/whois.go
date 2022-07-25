@@ -10,16 +10,16 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/nuclei/v2/pkg/operators"
-	"github.com/projectdiscovery/nuclei/v2/pkg/operators/extractors"
-	"github.com/projectdiscovery/nuclei/v2/pkg/operators/matchers"
-	"github.com/projectdiscovery/nuclei/v2/pkg/output"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/helpers/eventcreator"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/helpers/responsehighlighter"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/replacer"
-	templateTypes "github.com/projectdiscovery/nuclei/v2/pkg/templates/types"
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/operators"
+	"github.com/heckintosh/nuclei/v2/pkg/operators/extractors"
+	"github.com/heckintosh/nuclei/v2/pkg/operators/matchers"
+	"github.com/heckintosh/nuclei/v2/pkg/output"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/helpers/eventcreator"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/helpers/responsehighlighter"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/replacer"
+	templateTypes "github.com/heckintosh/nuclei/v2/pkg/templates/types"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
 )
 
 // Request is a request for the WHOIS protocol

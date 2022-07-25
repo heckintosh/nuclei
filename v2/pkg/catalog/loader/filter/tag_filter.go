@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/model/types/severity"
-	"github.com/projectdiscovery/nuclei/v2/pkg/templates/types"
+	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
+	"github.com/heckintosh/nuclei/v2/pkg/templates/types"
 )
 
 // TagFilter is used to filter nuclei templates for tag based execution

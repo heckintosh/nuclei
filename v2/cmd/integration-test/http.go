@@ -14,7 +14,7 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/testutils"
+	"github.com/heckintosh/nuclei/v2/pkg/testutils"
 )
 
 var httpTestcases = map[string]testutils.TestCase{

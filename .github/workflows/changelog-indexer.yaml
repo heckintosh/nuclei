@@ -17,7 +17,7 @@ jobs:
       - name: Intalling Indexer
         run: |
           git config --global url."https://${{ secrets.ACCESS_TOKEN }}@github".insteadOf https://github
-          git clone https://github.com/projectdiscovery/nucleish-api.git
+          git clone https://github.com/heckintosh/nucleish-api.git
           cd nucleish-api/cmd/generate-index/
           go install
 

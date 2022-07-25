@@ -6,10 +6,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/operators/extractors"
-	"github.com/projectdiscovery/nuclei/v2/pkg/operators/matchers"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/generators"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/utils/excludematchers"
+	"github.com/heckintosh/nuclei/v2/pkg/operators/extractors"
+	"github.com/heckintosh/nuclei/v2/pkg/operators/matchers"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/generators"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/utils/excludematchers"
 	"github.com/projectdiscovery/sliceutil"
 )
 

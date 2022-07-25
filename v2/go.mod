@@ -76,7 +76,7 @@ require (
 	github.com/openrdap/rdap v0.9.1-0.20191017185644-af93e7ef17b7
 	github.com/projectdiscovery/fileutil v0.0.0-20220705195237-01becc2a8963
 	github.com/projectdiscovery/iputil v0.0.0-20220620153941-036d511e4097
-	github.com/projectdiscovery/nuclei/v2 v2.7.5
+	github.com/heckintosh/nuclei/v2 v2.7.5
 	github.com/projectdiscovery/nvd v1.0.9-0.20220314070650-d4a214c1f87d
 	github.com/projectdiscovery/sliceutil v0.0.0-20220511171050-c7d9bc5cadd9
 	github.com/projectdiscovery/urlutil v0.0.0-20210525140139-b874f06ad921

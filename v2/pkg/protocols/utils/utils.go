@@ -5,7 +5,7 @@ import (
 	"crypto/x509"
 	"os"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
 )
 
 // AddConfiguredClientCertToRequest adds the client certificate authentication to the tls.Config object and returns it

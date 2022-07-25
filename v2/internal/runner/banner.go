@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/nuclei/v2/pkg/catalog/config"
+	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 )
 
 var banner = fmt.Sprintf(`

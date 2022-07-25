@@ -13,8 +13,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/protocolstate"
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/protocolstate"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
 )
 
 func TestActionNavigate(t *testing.T) {

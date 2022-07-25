@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"net"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/testutils"
+	"github.com/heckintosh/nuclei/v2/pkg/testutils"
 )
 
 var sslTestcases = map[string]testutils.TestCase{

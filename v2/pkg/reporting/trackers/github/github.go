@@ -12,9 +12,9 @@ import (
 	"github.com/google/go-github/github"
 	"github.com/pkg/errors"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/output"
-	"github.com/projectdiscovery/nuclei/v2/pkg/reporting/format"
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/output"
+	"github.com/heckintosh/nuclei/v2/pkg/reporting/format"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
 	"github.com/projectdiscovery/retryablehttp-go"
 )
 
