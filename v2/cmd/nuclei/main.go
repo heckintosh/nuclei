@@ -11,7 +11,7 @@ import (
 	"github.com/projectdiscovery/goflags"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/interactsh/pkg/client"
-	"github.com/heckintosh/nuclei/v2/internal/runner"
+	"github.com/heckintosh/nuclei/v2/core/runner"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
 	"github.com/heckintosh/nuclei/v2/pkg/protocols/http"

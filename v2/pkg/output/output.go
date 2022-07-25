@@ -18,7 +18,7 @@ import (
 	"github.com/projectdiscovery/fileutil"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/interactsh/pkg/server"
-	"github.com/heckintosh/nuclei/v2/internal/colorizer"
+	"github.com/heckintosh/nuclei/v2/core/colorizer"
 	"github.com/heckintosh/nuclei/v2/pkg/model"
 	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
 	"github.com/heckintosh/nuclei/v2/pkg/operators"

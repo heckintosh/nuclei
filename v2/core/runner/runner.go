@@ -21,7 +21,7 @@ import (
 	"go.uber.org/ratelimit"
 
 	"github.com/projectdiscovery/gologger"
-	"github.com/heckintosh/nuclei/v2/internal/colorizer"
+	"github.com/heckintosh/nuclei/v2/core/colorizer"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/loader"
