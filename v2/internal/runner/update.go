@@ -28,7 +28,7 @@ import (
 	"github.com/projectdiscovery/fileutil"
 	"github.com/projectdiscovery/folderutil"
 	"github.com/projectdiscovery/gologger"
-	"github.com/heckintosh/nuclei-updatecheck-api/client"
+	"github.com/projectdiscovery/nuclei-updatecheck-api/client"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 	"github.com/heckintosh/nuclei/v2/pkg/utils"
 
