@@ -5,17 +5,17 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/nuclei/v2/pkg/catalog"
-	"github.com/projectdiscovery/nuclei/v2/pkg/catalog/config"
-	"github.com/projectdiscovery/nuclei/v2/pkg/catalog/loader/filter"
-	"github.com/projectdiscovery/nuclei/v2/pkg/model/types/severity"
-	"github.com/projectdiscovery/nuclei/v2/pkg/parsers"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols"
-	"github.com/projectdiscovery/nuclei/v2/pkg/templates"
-	templateTypes "github.com/projectdiscovery/nuclei/v2/pkg/templates/types"
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
-	"github.com/projectdiscovery/nuclei/v2/pkg/utils/stats"
-	"github.com/projectdiscovery/nuclei/v2/pkg/workflows"
+	"github.com/heckintosh/nuclei/v2/pkg/catalog"
+	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
+	"github.com/heckintosh/nuclei/v2/pkg/catalog/loader/filter"
+	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
+	"github.com/heckintosh/nuclei/v2/pkg/parsers"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols"
+	"github.com/heckintosh/nuclei/v2/pkg/templates"
+	templateTypes "github.com/heckintosh/nuclei/v2/pkg/templates/types"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/utils/stats"
+	"github.com/heckintosh/nuclei/v2/pkg/workflows"
 )
 
 // Config contains the configuration options for the loader

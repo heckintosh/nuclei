@@ -5,8 +5,8 @@ import (
 	"go.uber.org/atomic"
 
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/nuclei/v2/pkg/output"
-	"github.com/projectdiscovery/nuclei/v2/pkg/workflows"
+	"github.com/heckintosh/nuclei/v2/pkg/output"
+	"github.com/heckintosh/nuclei/v2/pkg/workflows"
 )
 
 const workflowExecutionErrorMessageTemplate = "[%s] Could not execute workflow step: %s\n"

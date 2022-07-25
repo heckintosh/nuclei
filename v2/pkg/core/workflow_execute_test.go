@@ -5,12 +5,12 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/projectdiscovery/nuclei/v2/pkg/operators"
-	"github.com/projectdiscovery/nuclei/v2/pkg/output"
-	"github.com/projectdiscovery/nuclei/v2/pkg/progress"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols"
-	"github.com/projectdiscovery/nuclei/v2/pkg/types"
-	"github.com/projectdiscovery/nuclei/v2/pkg/workflows"
+	"github.com/heckintosh/nuclei/v2/pkg/operators"
+	"github.com/heckintosh/nuclei/v2/pkg/output"
+	"github.com/heckintosh/nuclei/v2/pkg/progress"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols"
+	"github.com/heckintosh/nuclei/v2/pkg/types"
+	"github.com/heckintosh/nuclei/v2/pkg/workflows"
 )
 
 func TestWorkflowsSimple(t *testing.T) {

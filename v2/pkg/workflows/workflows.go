@@ -1,8 +1,8 @@
 package workflows
 
 import (
-	"github.com/projectdiscovery/nuclei/v2/pkg/model/types/stringslice"
-	"github.com/projectdiscovery/nuclei/v2/pkg/protocols"
+	"github.com/heckintosh/nuclei/v2/pkg/model/types/stringslice"
+	"github.com/heckintosh/nuclei/v2/pkg/protocols"
 )
 
 // Workflow is a workflow to execute with chained requests, etc.

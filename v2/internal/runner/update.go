@@ -29,8 +29,8 @@ import (
 	"github.com/projectdiscovery/folderutil"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/nuclei-updatecheck-api/client"
-	"github.com/projectdiscovery/nuclei/v2/pkg/catalog/config"
-	"github.com/projectdiscovery/nuclei/v2/pkg/utils"
+	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
+	"github.com/heckintosh/nuclei/v2/pkg/utils"
 
 	"github.com/tj/go-update"
 	"github.com/tj/go-update/progress"
