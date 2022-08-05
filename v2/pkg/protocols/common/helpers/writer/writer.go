@@ -1,10 +1,11 @@
 package writer
 
 import (
-	"github.com/projectdiscovery/gologger"
-	"github.com/heckintosh/nuclei/v2/pkg/output"
-	"github.com/heckintosh/nuclei/v2/pkg/progress"
-	"github.com/heckintosh/nuclei/v2/pkg/reporting"
+	// "github.com/projectdiscovery/gologger"
+	"github.com/davecgh/go-spew/spew"
+	"github.com/projectdiscovery/nuclei/v2/pkg/output"
+	"github.com/projectdiscovery/nuclei/v2/pkg/progress"
+	"github.com/projectdiscovery/nuclei/v2/pkg/reporting"
 )
 
 // WriteResult is a helper for writing results to the output
@@ -16,20 +17,22 @@ func WriteResult(data *output.InternalWrappedEvent, output output.Writer, progre
 		return false
 	}
 	var matched bool
-	for _, result := range data.Results {
-		if err := output.Write(result); err != nil {
-			gologger.Warning().Msgf("Could not write output event: %s\n", err)
-		}
-		if !matched {
-			matched = true
-		}
-		progress.IncrementMatched()
+	// for _, result := range data.Results {
+	// 	if err := output.Write(result); err != nil {
+	// 		gologger.Warning().Msgf("Could not write output event: %s\n", err)
+	// 	}
+	// 	if !matched {
+	// 		matched = true
+	// 	}
+	// 	progress.IncrementMatched()
 
-		if issuesClient != nil {
-			if err := issuesClient.CreateIssue(result); err != nil {
-				gologger.Warning().Msgf("Could not create issue on tracker: %s", err)
-			}
-		}
-	}
+	// 	if issuesClient != nil {
+	// 		if err := issuesClient.CreateIssue(result); err != nil {
+	// 			gologger.Warning().Msgf("Could not create issue on tracker: %s", err)
+	// 		}
+	// 	}
+	// }
+	matched=true
+	spew.Dump(data.Results)
 	return matched
 }
