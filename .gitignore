@@ -6,6 +6,7 @@ integration_tests/integration-test
 v2/cmd/nuclei/main
 v2/cmd/nuclei/nuclei
 v2/cmd/integration-test/nuclei
+v2/cmd/nuclei/templates
 v2/cmd/functional-test/nuclei_dev
 v2/cmd/functional-test/nuclei_main
 v2/cmd/functional-test/functional-test

@@ -7,10 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/projectdiscovery/fileutil"
-	"github.com/projectdiscovery/goflags"
-	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/interactsh/pkg/client"
+	"github.com/davecgh/go-spew/spew"
 	"github.com/heckintosh/nuclei/v2/core/runner"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
@@ -18,6 +15,10 @@ import (
 	templateTypes "github.com/heckintosh/nuclei/v2/pkg/templates/types"
 	"github.com/heckintosh/nuclei/v2/pkg/types"
 	"github.com/heckintosh/nuclei/v2/pkg/utils/monitor"
+	"github.com/projectdiscovery/fileutil"
+	"github.com/projectdiscovery/goflags"
+	"github.com/projectdiscovery/gologger"
+	"github.com/projectdiscovery/interactsh/pkg/client"
 )
 
 var (
@@ -33,13 +34,13 @@ func main() {
 	readConfig()
 
 	runner.ParseOptions(options)
-
 	if options.HangMonitor {
 		cancel := monitor.NewStackMonitor(10 * time.Second)
 		defer cancel()
 	}
 
 	nucleiRunner, err := runner.New(options)
+
 	if err != nil {
 		gologger.Fatal().Msgf("Could not create runner: %s\n", err)
 	}
@@ -130,36 +131,10 @@ on extensive configurability, massive extensibility and ease of use.`)
 		flagSet.StringVarP(&options.Output, "output", "o", "", "output file to write found issues/vulnerabilities"),
 		flagSet.BoolVarP(&options.StoreResponse, "store-resp", "sresp", false, "store all request/response passed through nuclei to output directory"),
 		flagSet.StringVarP(&options.StoreResponseDir, "store-resp-dir", "srd", runner.DefaultDumpTrafficOutputFolder, "store all request/response passed through nuclei to custom directory"),
-		flagSet.BoolVar(&options.Silent, "silent", false, "display findings only"),
-		flagSet.BoolVarP(&options.NoColor, "no-color", "nc", false, "disable output content coloring (ANSI escape codes)"),
-		flagSet.BoolVar(&options.JSON, "json", false, "write output in JSONL(ines) format"),
-		flagSet.BoolVarP(&options.JSONRequests, "include-rr", "irr", false, "include request/response pairs in the JSONL output (for findings only)"),
-		flagSet.BoolVarP(&options.NoMeta, "no-meta", "nm", false, "disable printing result metadata in cli output"),
-		flagSet.BoolVarP(&options.NoTimestamp, "no-timestamp", "nts", false, "disable printing timestamp in cli output"),
-		flagSet.StringVarP(&options.ReportingDB, "report-db", "rdb", "", "nuclei reporting database (always use this to persist report data)"),
-		flagSet.BoolVarP(&options.MatcherStatus, "matcher-status", "ms", false, "display match failure status"),
-		flagSet.StringVarP(&options.MarkdownExportDirectory, "markdown-export", "me", "", "directory to export results in markdown format"),
-		flagSet.StringVarP(&options.SarifExport, "sarif-export", "se", "", "file to export results in SARIF format"),
 	)
 
 	flagSet.CreateGroup("configs", "Configurations",
 		flagSet.StringVar(&cfgFile, "config", "", "path to the nuclei configuration file"),
-		flagSet.BoolVarP(&options.FollowRedirects, "follow-redirects", "fr", false, "enable following redirects for http templates"),
-		flagSet.IntVarP(&options.MaxRedirects, "max-redirects", "mr", 10, "max number of redirects to follow for http templates"),
-		flagSet.BoolVarP(&options.DisableRedirects, "disable-redirects", "dr", false, "disable redirects for http templates"),
-		flagSet.StringVarP(&options.ReportingConfig, "report-config", "rc", "", "nuclei reporting module configuration file"), // TODO merge into the config file or rename to issue-tracking
-		flagSet.FileStringSliceVarP(&options.CustomHeaders, "header", "H", []string{}, "custom header/cookie to include in all http request in header:value format (cli, file)"),
-		flagSet.RuntimeMapVarP(&options.Vars, "var", "V", []string{}, "custom vars in key=value format"),
-		flagSet.StringVarP(&options.ResolversFile, "resolvers", "r", "", "file containing resolver list for nuclei"),
-		flagSet.BoolVarP(&options.SystemResolvers, "system-resolvers", "sr", false, "use system DNS resolving as error fallback"),
-		flagSet.BoolVar(&options.OfflineHTTP, "passive", false, "enable passive HTTP response processing mode"),
-		flagSet.BoolVarP(&options.EnvironmentVariables, "env-vars", "ev", false, "enable environment variables to be used in template"),
-		flagSet.StringVarP(&options.ClientCertFile, "client-cert", "cc", "", "client certificate file (PEM-encoded) used for authenticating against scanned hosts"),
-		flagSet.StringVarP(&options.ClientKeyFile, "client-key", "ck", "", "client key file (PEM-encoded) used for authenticating against scanned hosts"),
-		flagSet.StringVarP(&options.ClientCAFile, "client-ca", "ca", "", "client certificate authority file (PEM-encoded) used for authenticating against scanned hosts"),
-		flagSet.BoolVarP(&options.ShowMatchLine, "show-match-line", "sml", false, "show match lines for file templates, works with extractors only"),
-		flagSet.BoolVar(&options.ZTLS, "ztls", false, "use ztls library with autofallback to standard one for tls13"),
-		flagSet.StringVar(&options.SNI, "sni", "", "tls sni hostname to use (default: input domain name)"),
 	)
 
 	flagSet.CreateGroup("interactsh", "interactsh",
@@ -182,10 +157,10 @@ on extensive configurability, massive extensibility and ease of use.`)
 	)
 
 	flagSet.CreateGroup("optimization", "Optimizations",
-		flagSet.IntVar(&options.Timeout, "timeout", 5, "time to wait in seconds before timeout"),
+		flagSet.IntVar(&options.Timeout, "timeout", 6, "time to wait in seconds before timeout"),
 		flagSet.IntVar(&options.Retries, "retries", 1, "number of times to retry a failed request"),
 		flagSet.BoolVarP(&options.LeaveDefaultPorts, "leave-default-ports", "ldp", false, "leave default HTTP/HTTPS ports (eg. host:80,host:443"),
-		flagSet.IntVarP(&options.MaxHostError, "max-host-error", "mhe", 30, "max errors for a host before skipping from scan"),
+		flagSet.IntVarP(&options.MaxHostError, "max-host-error", "mhe", 35, "max errors for a host before skipping from scan"),
 		flagSet.BoolVar(&options.Project, "project", false, "use a project folder to avoid sending same request multiple times"),
 		flagSet.StringVar(&options.ProjectPath, "project-path", os.TempDir(), "set a specific project path"),
 		flagSet.BoolVarP(&options.StopAtFirstMatch, "stop-at-first-path", "spm", false, "stop processing HTTP requests after the first match (may break template/workflow logic)"),
@@ -199,23 +174,6 @@ on extensive configurability, massive extensibility and ease of use.`)
 		flagSet.IntVar(&options.PageTimeout, "page-timeout", 20, "seconds to wait for each page in headless mode"),
 		flagSet.BoolVarP(&options.ShowBrowser, "show-browser", "sb", false, "show the browser on the screen when running templates with headless mode"),
 		flagSet.BoolVarP(&options.UseInstalledChrome, "system-chrome", "sc", false, "Use local installed chrome browser instead of nuclei installed"),
-	)
-
-	flagSet.CreateGroup("debug", "Debug",
-		flagSet.BoolVar(&options.Debug, "debug", false, "show all requests and responses"),
-		flagSet.BoolVarP(&options.DebugRequests, "debug-req", "dreq", false, "show all sent requests"),
-		flagSet.BoolVarP(&options.DebugResponse, "debug-resp", "dresp", false, "show all received responses"),
-		flagSet.NormalizedOriginalStringSliceVarP(&options.Proxy, "proxy", "p", []string{}, "list of http/socks5 proxy to use (comma separated or file input)"),
-		flagSet.BoolVarP(&options.ProxyInternal, "proxy-internal", "pi", false, "proxy all internal requests"),
-		flagSet.StringVarP(&options.TraceLogFile, "trace-log", "tlog", "", "file to write sent requests trace log"),
-		flagSet.StringVarP(&options.ErrorLogFile, "error-log", "elog", "", "file to write sent requests error log"),
-		flagSet.BoolVar(&options.Version, "version", false, "show nuclei version"),
-		flagSet.BoolVarP(&options.HangMonitor, "hang-monitor", "hm", false, "enable nuclei hang monitoring"),
-		flagSet.BoolVarP(&options.Verbose, "verbose", "v", false, "show verbose output"),
-		flagSet.BoolVar(&options.VerboseVerbose, "vv", false, "display templates loaded for scan"),
-		flagSet.BoolVarP(&options.EnablePprof, "enable-pprof", "ep", false, "enable pprof debugging server"),
-		flagSet.BoolVarP(&options.TemplatesVersion, "templates-version", "tv", false, "shows the version of the installed nuclei-templates"),
-		flagSet.BoolVarP(&options.HealthCheck, "health-check", "hc", false, "run diagnostic check up"),
 	)
 
 	flagSet.CreateGroup("update", "Update",
