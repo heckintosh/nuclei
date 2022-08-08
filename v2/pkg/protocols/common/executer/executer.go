@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/pkg/errors"
 
-	"github.com/projectdiscovery/gologger"
 	"github.com/heckintosh/nuclei/v2/pkg/operators/common/dsl"
 	"github.com/heckintosh/nuclei/v2/pkg/operators/matchers"
 	"github.com/heckintosh/nuclei/v2/pkg/output"
 	"github.com/heckintosh/nuclei/v2/pkg/protocols"
 	"github.com/heckintosh/nuclei/v2/pkg/protocols/common/helpers/writer"
+	"github.com/projectdiscovery/gologger"
 )
 
 // Executer executes a group of requests for a protocol
@@ -82,6 +83,7 @@ func (e *Executer) Execute(input string) (bool, error) {
 			// case of matcher-status flag.
 			if event.OperatorsResult == nil && !event.UsesInteractsh {
 				if err := e.options.Output.WriteFailure(event.InternalEvent); err != nil {
+					spew.Dump("ERRROR")
 					gologger.Warning().Msgf("Could not write failure event to output: %s\n", err)
 				}
 			} else {
@@ -101,9 +103,9 @@ func (e *Executer) Execute(input string) (bool, error) {
 			gologger.Warning().Msgf("[%s] Could not execute request for %s: %s\n", e.options.TemplateID, input, err)
 		}
 		// If a match was found and stop at first match is set, break out of the loop and return
-		if results && (e.options.StopAtFirstMatch || e.options.Options.StopAtFirstMatch) {
-			break
-		}
+		// if results && (e.options.StopAtFirstMatch || e.options.Options.StopAtFirstMatch) {
+		// 	break
+		// }
 	}
 	return results, nil
 }

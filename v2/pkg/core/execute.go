@@ -135,6 +135,8 @@ func (e *Engine) executeModelWithInput(templateType types.ProtocolType, template
 
 			var match bool
 			var err error
+			
+
 			switch templateType {
 			case types.WorkflowProtocol:
 				match = e.executeWorkflow(value, template.CompiledWorkflow)

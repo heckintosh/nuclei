@@ -5,6 +5,7 @@ import (
 	"github.com/heckintosh/nuclei/v2/pkg/output"
 	"github.com/heckintosh/nuclei/v2/pkg/progress"
 	"github.com/heckintosh/nuclei/v2/pkg/reporting"
+	
 )
 
 // WriteResult is a helper for writing results to the output
@@ -17,9 +18,10 @@ func WriteResult(data *output.InternalWrappedEvent, output output.Writer, progre
 	}
 	var matched bool
 	for _, result := range data.Results {
-		if err := output.Write(result); err != nil {
-			gologger.Warning().Msgf("Could not write output event: %s\n", err)
-		}
+		// if err := output.Write(result); err != nil {
+		// 	gologger.Warning().Msgf("Could not write output event: %s\n", err)
+		// }
+		
 		if !matched {
 			matched = true
 		}

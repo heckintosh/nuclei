@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/heckintosh/nuclei/v2/core/runner"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
@@ -24,7 +23,10 @@ import (
 var (
 	cfgFile string
 	options = &types.Options{}
+	// res []*output.ResultEvent
 )
+
+
 
 func main() {
 	if err := runner.ConfigureOptions(); err != nil {
