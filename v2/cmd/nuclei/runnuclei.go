@@ -28,12 +28,12 @@ var (
 	// res []*output.ResultEvent
 )
 
-func runNuclei() []*output.ResultEvent {
+func runNuclei(pathConfig string, listTarget []string) []*output.ResultEvent {
 	if err := runner.ConfigureOptions(); err != nil {
 		gologger.Fatal().Msgf("Could not initialize options: %s\n", err)
 	}
 
-	readConfig()
+	readConfig(pathConfig,listTarget)
 
 	runner.ParseOptions(options)
 	if options.HangMonitor {
@@ -84,7 +84,7 @@ func runNuclei() []*output.ResultEvent {
 	return globalvar.Get()
 }
 
-func readConfig() {
+func readConfig(pathConfig string, targets[] string) {
 
 	flagSet := goflags.NewFlagSet()
 	flagSet.SetDescription(`Nuclei is a fast, template based vulnerability scanner focusing
@@ -95,7 +95,7 @@ on extensive configurability, massive extensibility and ease of use.`)
 	*/
 
 	flagSet.CreateGroup("input", "Target",
-		flagSet.StringSliceVarP(&options.Targets, "target", "u", []string{}, "target URLs/hosts to scan"),
+		flagSet.StringSliceVarP(&options.Targets, "target", "u", targets, "target URLs/hosts to scan"),
 		flagSet.StringVarP(&options.TargetsFilePath, "list", "l", "", "path to file containing a list of target URLs/hosts to scan (one per line)"),
 		flagSet.StringVar(&options.Resume, "resume", "", "Resume scan using resume.cfg (clustering will be disabled)"),
 	)
@@ -137,7 +137,7 @@ on extensive configurability, massive extensibility and ease of use.`)
 	)
 
 	flagSet.CreateGroup("configs", "Configurations",
-		flagSet.StringVar(&cfgFile, "config", "", "path to the nuclei configuration file"),
+		flagSet.StringVar(&cfgFile, "config", pathConfig, "path to the nuclei configuration file"),
 	)
 
 	flagSet.CreateGroup("interactsh", "interactsh",
