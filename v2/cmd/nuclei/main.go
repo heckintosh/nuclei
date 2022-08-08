@@ -1,4 +1,4 @@
-package main
+package runNuclei
 
 import (
 	"fmt"
@@ -7,9 +7,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/heckintosh/nuclei/v2/cmd/globalvar"
 	"github.com/heckintosh/nuclei/v2/core/runner"
 	"github.com/heckintosh/nuclei/v2/pkg/catalog/config"
 	"github.com/heckintosh/nuclei/v2/pkg/model/types/severity"
+	"github.com/heckintosh/nuclei/v2/pkg/output"
 	"github.com/heckintosh/nuclei/v2/pkg/protocols/http"
 	templateTypes "github.com/heckintosh/nuclei/v2/pkg/templates/types"
 	"github.com/heckintosh/nuclei/v2/pkg/types"
@@ -26,9 +28,7 @@ var (
 	// res []*output.ResultEvent
 )
 
-
-
-func main() {
+func runNuclei() []*output.ResultEvent {
 	if err := runner.ConfigureOptions(); err != nil {
 		gologger.Fatal().Msgf("Could not initialize options: %s\n", err)
 	}
@@ -47,7 +47,7 @@ func main() {
 		gologger.Fatal().Msgf("Could not create runner: %s\n", err)
 	}
 	if nucleiRunner == nil {
-		return
+		return nil
 	}
 
 	// Setup graceful exits
@@ -81,6 +81,7 @@ func main() {
 	if fileutil.FileExists(resumeFileName) {
 		os.Remove(resumeFileName)
 	}
+	return globalvar.Get()
 }
 
 func readConfig() {
@@ -101,7 +102,7 @@ on extensive configurability, massive extensibility and ease of use.`)
 
 	flagSet.CreateGroup("templates", "Templates",
 		flagSet.BoolVarP(&options.NewTemplates, "new-templates", "nt", false, "run only new templates added in latest nuclei-templates release"),
-		flagSet.CommaSeparatedStringSliceVarP(&options.NewTemplatesWithVersion,"new-templates-version", "ntv", []string{}, "run new templates added in specific version"),
+		flagSet.CommaSeparatedStringSliceVarP(&options.NewTemplatesWithVersion, "new-templates-version", "ntv", []string{}, "run new templates added in specific version"),
 		flagSet.BoolVarP(&options.AutomaticScan, "automatic-scan", "as", false, "automatic web scan using wappalyzer technology detection to tags mapping"),
 		flagSet.FileNormalizedOriginalStringSliceVarP(&options.Templates, "templates", "t", []string{}, "list of template or template directory to run (comma-separated, file)"),
 		flagSet.FileNormalizedOriginalStringSliceVarP(&options.TemplateURLs, "template-url", "tu", []string{}, "list of template urls to run (comma-separated, file)"),
